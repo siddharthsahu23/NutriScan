@@ -1,0 +1,32 @@
+{
+  "name": "nutriscan-ai",
+  "version": "1.0.0",
+  "main": "cli.js",
+  "scripts": {
+    "start": "node server.js",
+    "cli": "node cli.js",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "food",
+    "nutrition",
+    "barcode",
+    "scanner",
+    "ai",
+    "health"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "CLI application that analyzes food products by barcode using OpenFoodFacts API and AI",
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "@google/generative-ai": "^0.24.1",
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "readline-sync": "^1.4.10"
+  }
+}

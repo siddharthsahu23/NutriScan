@@ -1,0 +1,56 @@
+# NutriScan AI - Requirements and Dependencies
+
+## Node.js Runtime
+Node.js version: 20.x or higher
+
+## NPM Dependencies
+@google/generative-ai@^3.0.0    # Google Gemini AI API integration
+axios@^1.11.0                   # HTTP client for OpenFoodFacts API
+dotenv@^17.2.2                  # Environment variable management
+readline-sync@^1.4.10           # Interactive CLI input handling
+express@^4.18.0                 # Web server for frontend API
+cors@^2.8.5                     # Cross-origin resource sharing
+
+## Required Project Files
+cli.js
+package.json
+services/fetchProduct.js
+services/analyzeAI.js
+utils/formatter.js
+
+## Web Frontend Files
+index.html
+style.css
+script.js
+assets/
+
+## Configuration Files
+.env
+.env.example
+
+## Documentation
+replit.md
+requirements.txt
+
+## Environment Variables Required
+GEMINI_API_KEY                  # Google Gemini API key (required)
+
+## Installation Commands
+npm install                     # Install all dependencies
+npm start                       # Run the web application
+node cli.js                     # Run CLI version
+
+## External APIs Used
+- OpenFoodFacts API: https://world.openfoodfacts.org/api/v0/
+- Google Gemini API: https://ai.google.dev/
+
+## Frontend Libraries (CDN)
+- html5-qrcode: Barcode scanning functionality
+- Font Awesome: Icons for UI
+
+## Minimum System Requirements
+- Node.js 20.x or higher
+- Internet connection for API calls
+- Valid Google Gemini API key
+- Modern web browser with camera access
+- Terminal/Command line interface

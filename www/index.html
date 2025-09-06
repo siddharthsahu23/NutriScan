@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriScan AI - Smart Food Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="app-logo">
+                    <i class="fas fa-leaf"></i>
+                    <h1>NutriScan AI</h1>
+                </div>
+                <p class="app-subtitle">Smart Food Analysis with AI</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Screen -->
+            <div id="home-screen" class="screen active">
+                <div class="welcome-section">
+                    <h2>Analyze Your Food</h2>
+                    <p>Get instant health insights by scanning or entering product barcodes</p>
+                </div>
+
+                <div class="action-cards">
+                    <div class="action-card scan-card" onclick="startScanning()">
+                        <div class="card-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Scan Barcode</h3>
+                            <p>Use your camera to scan product barcode</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="action-card manual-card" onclick="showManualEntry()">
+                        <div class="card-icon">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Enter Manually</h3>
+                            <p>Type the barcode number manually</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Examples -->
+                <div class="examples-section">
+                    <h4>Try these sample barcodes:</h4>
+                    <div class="example-barcodes">
+                        <span class="example-barcode" onclick="analyzeBarcode('3017624010701')">3017624010701</span>
+                        <span class="example-barcode" onclick="analyzeBarcode('737628064502')">737628064502</span>
+                        <span class="example-barcode" onclick="analyzeBarcode('3274080005003')">3274080005003</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scanner Screen -->
+            <div id="scanner-screen" class="screen">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="showHomeScreen()">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h2>Scan Barcode</h2>
+                </div>
+                
+                <div class="scanner-container">
+                    <div id="scanner-reader" class="scanner-reader">
+                        <div class="scanner-placeholder">
+                            <i class="fas fa-camera" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 1rem;"></i>
+                            <p>Initializing camera...</p>
+                        </div>
+                    </div>
+                    <div class="scanner-instructions">
+                        <p>Position the barcode within the frame</p>
+                        <p>Make sure the barcode is clearly visible</p>
+                        <p><small>Allow camera permissions when prompted</small></p>
+                    </div>
+                </div>
+
+                <div class="scanner-actions">
+                    <button class="btn btn-secondary" onclick="stopScanning()">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                    <button class="btn btn-primary" onclick="showManualEntry()" style="margin-left: 0.5rem;">
+                        <i class="fas fa-keyboard"></i> Manual Entry
+                    </button>
+                </div>
+            </div>
+
+            <!-- Manual Entry Screen -->
+            <div id="manual-screen" class="screen">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="showHomeScreen()">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h2>Enter Barcode</h2>
+                </div>
+
+                <div class="manual-entry-form">
+                    <div class="input-group">
+                        <label for="barcode-input">Product Barcode</label>
+                        <input 
+                            type="text" 
+                            id="barcode-input" 
+                            placeholder="Enter 12 or 13 digit barcode..."
+                            maxlength="13"
+                            pattern="[0-9]{12,13}"
+                        >
+                        <small class="input-help">Enter UPC (12 digits) or EAN-13 (13 digits)</small>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="analyzeManualBarcode()">
+                        <i class="fas fa-search"></i>
+                        Analyze Product
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading Screen -->
+            <div id="loading-screen" class="screen">
+                <div class="loading-content">
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                    </div>
+                    <h3>Analyzing Product...</h3>
+                    <p>Getting product information and running AI analysis</p>
+                    <div class="loading-steps">
+                        <div class="step" id="step-fetch">
+                            <i class="fas fa-database"></i>
+                            <span>Fetching product data</span>
+                        </div>
+                        <div class="step" id="step-analyze">
+                            <i class="fas fa-brain"></i>
+                            <span>AI health analysis</span>
+                        </div>
+                        <div class="step" id="step-format">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Generating report</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Report Screen -->
+            <div id="report-screen" class="screen">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="showHomeScreen()">
+                        <i class="fas fa-home"></i>
+                    </button>
+                    <h2>Analysis Report</h2>
+                </div>
+
+                <div class="report-content" id="report-content">
+                    <!-- Report will be dynamically generated here -->
+                </div>
+
+                <div class="report-actions">
+                    <button class="btn btn-primary" onclick="showHomeScreen()">
+                        <i class="fas fa-plus"></i>
+                        Analyze Another Product
+                    </button>
+                </div>
+            </div>
+
+            <!-- Error Screen -->
+            <div id="error-screen" class="screen">
+                <div class="error-content">
+                    <div class="error-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 id="error-title">Product Not Found</h3>
+                    <p id="error-message">Sorry, we couldn't find this product in our database. Please try another barcode.</p>
+                    
+                    <div class="error-actions">
+                        <button class="btn btn-primary" onclick="showHomeScreen()">
+                            <i class="fas fa-home"></i>
+                            Try Another Product
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Powered by OpenFoodFacts & Google Gemini AI</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

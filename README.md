@@ -1,5 +1,8 @@
 # 🍏 NutriScan App
 
+👨‍💻 **Team:** *BachelorBytes*  
+📍 *Mind-Sprint 2025 Hackathon Project*  
+
 ## 📸 Smart Food Analysis with a Snap  
 
 NutriScan AI is an intelligent mobile application designed to **demystify food nutrition labels**.  

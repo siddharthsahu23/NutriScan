@@ -3,6 +3,14 @@
 👨‍💻 **Team:** *BachelorBytes*  
 📍 *Mind-Sprint 2025 Hackathon Project*  
 
+TEAM MEMBERS - 
+● Siddharth Sahu
+● Kunal Gaikwad
+● Pushkar Verma
+● Tanuj Ramani
+● Mudit Raj Gajpal
+
+
 ## 📸 Smart Food Analysis with a Snap  
 
 NutriScan AI is an intelligent mobile application designed to **demystify food nutrition labels**.  

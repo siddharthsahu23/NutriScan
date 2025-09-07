@@ -1,3 +1,7 @@
+/* Import Orbitron font for a futuristic look */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap');
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -6,12 +10,12 @@
 }
 
 :root {
-    /* Dark Theme Colors - UPI App Inspired */
-    --primary-bg: #0f0f23;
-    --secondary-bg: #1a1a2e;
-    --card-bg: #16213e;
-    --accent-purple: #6c5ce7;
-    --accent-blue: #74b9ff;
+    /* Green Health Theme Colors */
+    --primary-bg: #0e1f17;
+    --secondary-bg: #183c2b;
+    --card-bg: #1c2e24;
+    --accent-green: #43ea7c;
+    --accent-teal: #2ec4b6;
     --success-green: #00b894;
     --warning-orange: #fdcb6e;
     --danger-red: #e17055;
@@ -20,12 +24,12 @@
     --text-muted: #6c757d;
     --border-color: #2d3748;
     --shadow: rgba(0, 0, 0, 0.2);
-    --gradient-primary: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-    --gradient-card: linear-gradient(135deg, #1a1a2e, #16213e);
+    --gradient-primary: linear-gradient(135deg, var(--accent-green), var(--accent-teal));
+    --gradient-card: linear-gradient(135deg, #183c2b, #1c2e24);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--primary-bg);
     color: var(--text-primary);
     line-height: 1.6;
@@ -212,13 +216,13 @@ body {
 }
 
 .scan-card .card-icon {
-    background: rgba(116, 185, 255, 0.1);
-    color: var(--accent-blue);
+    background: rgba(67, 234, 124, 0.1);
+    color: var(--accent-green);
 }
 
 .manual-card .card-icon {
-    background: rgba(108, 92, 231, 0.1);
-    color: var(--accent-purple);
+    background: rgba(46, 196, 182, 0.1);
+    color: var(--accent-teal);
 }
 
 .card-content {
@@ -388,27 +392,37 @@ body {
     text-decoration: none;
     justify-content: center;
     min-width: 120px;
+    background: rgba(46, 196, 182, 0.15); /* subtle green glass */
+    box-shadow: 0 4px 20px rgba(67, 234, 124, 0.15);
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    border: 1px solid rgba(67, 234, 124, 0.25);
+    color: var(--text-primary);
 }
 
 .btn-primary {
-    background: var(--gradient-primary);
+    background: linear-gradient(135deg, rgba(67, 234, 124, 0.35), rgba(46, 196, 182, 0.25));
     color: white;
+    border: 1px solid rgba(67, 234, 124, 0.35);
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+    box-shadow: 0 8px 32px rgba(67, 234, 124, 0.25);
+    transform: translateY(-2px) scale(1.03);
+    background: linear-gradient(135deg, rgba(67, 234, 124, 0.55), rgba(46, 196, 182, 0.35));
 }
 
 .btn-secondary {
-    background: var(--card-bg);
+    background: rgba(28, 46, 36, 0.25);
     color: var(--text-primary);
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(67, 234, 124, 0.15);
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
 }
 
 .btn-secondary:hover {
-    background: var(--secondary-bg);
-    border-color: var(--accent-purple);
+    background: rgba(46, 196, 182, 0.15);
+    border-color: var(--accent-green);
 }
 
 /* Loading Screen */
